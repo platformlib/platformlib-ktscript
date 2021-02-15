@@ -1,0 +1,9 @@
+plugins {
+    id 'org.jetbrains.kotlin.jvm'
+}
+
+dependencies {
+    implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk8'
+    implementation platform("com.platformlib:platformlib-ktscript-bom:${project['platformlib-ktscript.version']}")
+    implementation "com.platformlib:platformlib-ktscript-core"
+}

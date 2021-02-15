@@ -1,0 +1,16 @@
+pluginManagement {
+    plugins {
+        id 'com.github.spotbugs'       version '4.6.0'
+        id 'org.jetbrains.kotlin.jvm'  version settings['kotlin.version']
+    }
+}
+
+//
+rootProject.name = 'platformlib-ktscript'
+
+include ':platformlib-ktscript-api'
+include ':platformlib-ktscript-core'
+include ':platformlib-ktscript-plugins:platformlib-ktscript-gradle-plugin'
+include ':platformlib-ktscript-app:platformlib-ktscript-boot-app'
+include ':platformlib-ktscript-app:platformlib-ktscript-standalone-app'
+include ':platformlib-ktscript-bom'

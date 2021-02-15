@@ -1,0 +1,26 @@
+plugins {
+    id 'org.jetbrains.kotlin.jvm'
+}
+
+configurations {
+   ktScriptBoot
+}
+
+dependencies {
+    implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk8'
+    testImplementation "ch.qos.logback:logback-classic:${project['logback.version']}"
+    testImplementation "com.platformlib:platformlib-process-local:${project.'platformlib-process.version'}"
+    ktScriptBoot "com.platformlib:platformlib-ktscript-boot-app:${project['platformlib-ktscript.version']}"
+    testCompileOnly "com.platformlib:platformlib-ktscript-core:${project['platformlib-ktscript.version']}"
+}
+
+processTestResources {
+    from (configurations.ktScriptBoot) {
+        into "distribution"
+        rename { "platformlib-ktscript-boot-app.jar" }
+    }
+}
+
+test {
+    useJUnitPlatform()
+}

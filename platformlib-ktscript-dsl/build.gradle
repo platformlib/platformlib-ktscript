@@ -1,0 +1,19 @@
+plugins {
+    id 'org.jetbrains.kotlin.jvm'
+}
+
+dependencies {
+    api project(':platformlib-ktscript-core')
+}
+
+task coreLibraryDependencies {
+    outputs.file(file("$buildDir/resources/main/${project.name}.txt"))
+    doFirst {
+        def artifacts = ["${project.name}-${project.version}.jar"] + configurations.runtime.files.collect { artifacts.add(it.file.name) }
+        outputs.files.singleFile.write(artifacts.join('\n'))
+    }
+}
+
+processResources {
+    from coreLibraryDependencies
+}

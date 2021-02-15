@@ -1,0 +1,10 @@
+pluginManagement {
+    plugins {
+        id 'org.jetbrains.kotlin.jvm' version settings['kotlin.version']
+    }
+}
+
+include ':embedded'
+include ':standalone'
+
+includeBuild '../../platformlib-ktscript'
